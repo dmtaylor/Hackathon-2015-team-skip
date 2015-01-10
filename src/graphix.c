@@ -2,7 +2,7 @@
 
 #include "graphix.h"
 
-#define HEALTH_BAR_MARGIN_TOP  20
+#define HEALTH_BAR_MARGIN_TOP  10
 #define HEALTH_BAR_LENGTH     100
 #define HEALTH_BAR_HEIGHT      20
 
