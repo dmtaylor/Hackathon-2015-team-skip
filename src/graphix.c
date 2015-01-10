@@ -11,7 +11,7 @@
 #define HEALTH_BUFFER_SIZE        32
 #define HEALTH_TEXT_WIDTH        100
 #define HEALTH_TEXT_HEIGHT        20
-#define HEALTH_TEXT_MARGIN_TOP     1
+#define HEALTH_TEXT_MARGIN_TOP    10
 
 static Window *s_main_window;
 static Layer *s_canvas_layer;
