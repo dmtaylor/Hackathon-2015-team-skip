@@ -3,7 +3,7 @@
 #include "graphix.h"
 
 void init(){
-  graphix(0,0,0);
+  graphix(200,170,0);
   
 }
 
