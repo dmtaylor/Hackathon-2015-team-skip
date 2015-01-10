@@ -46,15 +46,6 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 	graphics_fill_rect(ctx,GRect(x_center - (HEALTH_BAR_LENGTH / 2),
 		HEALTH_BAR_MARGIN_TOP,rem_health,HEALTH_BAR_HEIGHT),
 		0,GCornerNone);
-
-/*	// damage fill
-	uint16_t damage = (int)(((_max_health - _curr_health)
-		/ ((double)_max_health)) * HEALTH_BAR_LENGTH);
-	graphics_context_set_fill_color(ctx,GColorWhite);
-	graphics_fill_rect(ctx,GRect(x_center + (HEALTH_BAR_LENGTH / 2)
-		- damage - 1,HEALTH_BAR_MARGIN_TOP,x_center
-		+ (HEALTH_BAR_LENGTH / 2), HEALTH_BAR_HEIGHT),0,GCornerNone);
-*/
 }
 
 void __load(Window* window)
