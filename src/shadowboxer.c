@@ -1,6 +1,6 @@
 #include <pebble.h>
 
-
+#include "graphix.h"
 
 void init(){
   graphix(0,0,0);
