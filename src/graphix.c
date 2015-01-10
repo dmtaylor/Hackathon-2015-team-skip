@@ -16,10 +16,16 @@ uint32_t _prev_dmg;
 void canvas_update_proc(Layer *this_layer, GContext *ctx)
 {
 	GRect bounds = layer_get_bounds(this_layer);
-	graphics_context_set_stroke_color(ctx,GColorBlack);
-	graphics_context_set_fill_color(ctx,GColorBlack);
 	int16_t x_center = bounds.size.w / 2;
+	graphics_context_set_stroke_color(ctx,GColorBlack);
+
+	graphics_context_set_fill_color(ctx,GColorBlack);
 	graphics_fill_rect(ctx,GRect(x_center - (HEALTH_BAR_LENGTH / 2),HEALTH_BAR_MARGIN_TOP,HEALTH_BAR_LENGTH,HEALTH_BAR_HEIGHT),0,GCornerNone);
+
+	int16_t damage = (int)(((_max_health - _curr_health) / ((double)_max_health)) * HEALTH_BAR_LENGTH);
+	graphics_context_set_fill_color(ctx,GColorWhite);
+	graphics_fill_rect(ctx,GRect(x_center + (HEALTH_BAR_LENGTH / 2) - damage,HEALTH_BAR_MARGIN_TOP,x_center + (HEALTH_BAR_LENGTH / 2),HEALTH_BAR_HEIGHT),0,GCornerNone);
+
 }
 
 void __load(Window* window)
