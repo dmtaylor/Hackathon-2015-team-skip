@@ -7,7 +7,11 @@
 #define HEALTH_BAR_HEIGHT         20
 #define HEALTH_BAR_OUTLINE_WHITE   1
 #define HEALTH_BAR_OUTLINE_BLACK   1
-#define HEALTH_BUFFER_SIZE         32
+
+#define HEALTH_BUFFER_SIZE        32
+#define HEALTH_TEXT_WIDTH        100
+#define HEALTH_TEXT_HEIGHT        20
+#define HEALTH_TEXT_MARGIN_TOP     1
 
 static Window *s_main_window;
 static Layer *s_canvas_layer;
@@ -52,6 +56,15 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 
 	snprintf(health_buffer,HEALTH_BUFFER_SIZE,"%d/%d",
 		(int)_curr_health,(int)_max_health);
+
+	graphics_draw_text(ctx,health_buffer,FONT_KEY_GOTHIC_14,GRect(x_center
+		- (HEALTH_TEXT_WIDTH / 2),HEALTH_BAR_MARGIN_TOP
+		+ 3*HEALTH_BAR_OUTLINE_WHITE + 3*HEALTH_BAR_OUTLINE_BLACK
+		+ HEALTH_TEXT_MARGIN_TOP,x_center + (HEALTH_TEXT_WIDTH / 2),
+		HEALTH_BAR_MARGIN_TOP + 3*HEALTH_BAR_OUTLINE_WHITE
+		+ 3*HEALTH_BAR_OUTLINE_BLACK + HEALTH_TEXT_MARGIN_TOP
+		+ HEALTH_TEXT_HEIGHT),GTextOverflowModeTrailingEllipsis,
+		GTextAlignmentCenter,NULL);
 }
 
 void __load(Window* window)
