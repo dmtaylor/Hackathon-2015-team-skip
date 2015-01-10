@@ -57,6 +57,7 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 	snprintf(health_buffer,HEALTH_BUFFER_SIZE,"%d/%d",
 		(int)_curr_health,(int)_max_health);
 
+	graphics_context_set_text_color(ctx,GColorBlack);
 	graphics_draw_text(ctx,health_buffer,
 		fonts_get_system_font(FONT_KEY_GOTHIC_14),GRect(0,0,50,50),GTextOverflowModeTrailingEllipsis,
 		GTextAlignmentCenter,NULL);
