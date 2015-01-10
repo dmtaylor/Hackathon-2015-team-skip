@@ -137,9 +137,9 @@ static void deinit(void) {
 
   window_destroy(window);
 }
-
+/*
 int main(void) {
   init();
   app_event_loop();
   deinit();
-}
+}*/
