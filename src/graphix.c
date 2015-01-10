@@ -40,7 +40,7 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 		+ 2*HEALTH_BAR_OUTLINE_WHITE),0,GCornerNone);
 
 	// health fill
-	uint16_t rem_health = (uint_16)((_curr_health / ((double)_max_health))
+	uint16_t rem_health = (uint16_t)((_curr_health / ((double)_max_health))
 		* HEALTH_BAR_LENGTH)
 	graphics_context_set_fill_color(ctx,GColorBlack);
 	graphics_fill_rect(ctx,GRect(x_center - (HEALTH_BAR_LENGTH / 2),
