@@ -59,7 +59,7 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 
 	graphics_context_set_text_color(ctx,GColorBlack);
 	graphics_draw_text(ctx,health_buffer,
-		fonts_get_system_font(FONT_KEY_GOTHIC_14),GRect(x_center
+		fonts_get_system_font(FONT_KEY_GOTHIC_18),GRect(x_center
 		- (HEALTH_TEXT_WIDTH / 2),HEALTH_BAR_MARGIN_TOP
 		+ 3*HEALTH_BAR_OUTLINE_WHITE + 3*HEALTH_BAR_OUTLINE_BLACK
 		+ HEALTH_TEXT_MARGIN_TOP,HEALTH_TEXT_WIDTH,HEALTH_TEXT_HEIGHT),
