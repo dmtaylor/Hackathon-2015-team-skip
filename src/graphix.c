@@ -5,6 +5,11 @@
 static Window *s_main_window;
 static Layer *s_canvas_layer;
 
+void canvas_update_proc(Layer *this_layer, GContext *ctx)
+{
+
+}
+
 void __load(Window* window)
 {
 	Layer* window_layer = window_get_root_layer(window);
