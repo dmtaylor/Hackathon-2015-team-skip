@@ -62,7 +62,7 @@ char* get_monster_name(uint16_t level){
 				name = "Gnoll";
 				break;
 			case 5:
-				name = "Hobgoblin"
+				name = "Hobgoblin";
 				break;
 			case 6:
 				name = "Zombie";
@@ -254,7 +254,7 @@ char* get_monster_name(uint16_t level){
 				name = "Insect Spirit";
 				break;
 			case 6:
-				name = "Fire Elemental"
+				name = "Fire Elemental";
 			default:
 				break;
 		}
@@ -466,10 +466,10 @@ char* get_monster_adj(uint16_t type){
 				return_val="A Fighting";
 				break;
 			case 2:
-				return_val="A Strong"
+				return_val="A Strong";
 				break;
 			case 3:
-				return_val="A Forceful"
+				return_val="A Forceful";
 				break;
 			default:
 				break;
@@ -484,10 +484,10 @@ char* get_monster_adj(uint16_t type){
 				return_val="A Sly";
 				break;
 			case 2:
-				return_val="A Tricky"
+				return_val="A Tricky";
 				break;
 			case 3:
-				return_val="A Flanking"
+				return_val="A Flanking";
 				break;
 			default:
 				break;
@@ -502,10 +502,10 @@ char* get_monster_adj(uint16_t type){
 				return_val="A Thinking";
 				break;
 			case 2:
-				return_val="A Wise"
+				return_val="A Wise";
 				break;
 			case 3:
-				return_val="A Contemplative"
+				return_val="A Contemplative";
 				break;
 			default:
 				break;
@@ -520,10 +520,10 @@ char* get_monster_adj(uint16_t type){
 				return_val="A Evading";
 				break;
 			case 2:
-				return_val="A Swift"
+				return_val="A Swift";
 				break;
 			case 3:
-				return_val="A Fast"
+				return_val="A Fast";
 				break;
 			default:
 				break;
