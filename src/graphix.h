@@ -3,7 +3,7 @@
 
 #include <pebble.h>
 
-void graphix(uint32_t max_health , unit32_t curr_health , uint32_t prev_dmg);
+void graphix(uint32_t max_health , uint32_t curr_health , uint32_t prev_dmg);
 
 void ungraphix();
 
