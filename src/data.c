@@ -8,7 +8,7 @@
 #include "data.h"
 #define LEVEL_STEP 16
 
-char* get_monster_name(uint16_t level){
+char[64] get_monster_name(uint16_t level){
 	if(level == 0){
 		//fprintf(stderr, "Error: monster level invalid\n");
 		return NULL;
@@ -59,18 +59,18 @@ char* get_monster_name(uint16_t level){
 	else if(level>14*(MAX_LEVEL/LEVEL_STEP) && level<=15*(MAX_LEVEL/LEVEL_STEP)){
 		
 	}
-	else if(level>15*(MAX_LEVEL/LEVEL_STEP) && level<=MAX_LEVEL){
+	else if((level>15*(MAX_LEVEL/LEVEL_STEP)) && (level<=MAX_LEVEL)){
 		
 	}
 }
 
-char* get_monster_adj(uint16_t type){
+char[64] get_monster_adj(uint16_t type){
 	if(type == 0){
 		//fprintf(stderr, "Error: Monster type invalid\n");
 		return NULL;
 	}
 	int adj_val;
-	else if(type == 1){
+	if(type == 1){
 		
 	}
 	else if(type == 2){
@@ -93,7 +93,7 @@ monster_info* gen_monster(uint16_t monster_level){
 	
 	monster_info* monster = malloc(sizeof(monster_info));
 	if (monster == NULL){
-		fprintf(stderr, "Error: malloc failed\n");
+		//fprintf(stderr, "Error: malloc failed\n");
 		return NULL;
 	}
 	
@@ -152,7 +152,7 @@ void update_player_info(player_info* player, monster_info* monster){
 		//fprintf(stderr, "Error: monster info null, player cannot be updated\n");
 		return;
 	}
-	int new_xp = player->curr_xp + 2*monster->level;
+	uint32_t new_xp = player->curr_xp + 2*monster->level;
 	
 	if(new_xp >= player->next_xp){
 		player->curr_xp = 0;
@@ -171,7 +171,7 @@ uint16_t get_player_level(player_info* player){
 		//fprintf(stderr, "Error: Null player to get level");
 		return 0;
 	}
-	return player->level;
+	return player->curr_level;
 }
 
 double get_damage_mod(player_info* player){
