@@ -2,6 +2,10 @@
 
 #include "graphix.h"
 
+#define HEALTH_BAR_MARGIN_TOP   5
+#define HEALTH_BAR_LENGTH     100
+#define HEALTH_BAR_HEIGHT      20
+
 static Window *s_main_window;
 static Layer *s_canvas_layer;
 
@@ -13,9 +17,9 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 {
 	GRect bounds = layer_get_bounds(this_layer);
 	graphics_context_set_stroke_color(ctx,GColorBlack);
-//	GPoint center = GPoint(bounds.size.w / 2, (bounds.size.h / 2));
-//	graphics_fill_circle(ctx, center, 40);
-	graphics_draw_rect(ctx,GRect(0,0,50,50));
+	graphics_context_set_fill_color(ctx,GColorBlack);
+	int16_t x_center = bounds.size.w / 2;
+	graphics_fill_rect(ctx,GRect(x_center - (HEALTH_BAR_LENGTH / 2),HEALTH_BAR_MARGIN_TOP,HEALTH_BAR_LENGTH,HEALTH_BAR_HEIGHT),0,GCornerNone);
 }
 
 void __load(Window* window)
