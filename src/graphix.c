@@ -30,8 +30,8 @@ void graphix(uint32_t max_health , uint32_t curr_health , uint32_t prev_dmg)
 {
 	s_main_window = window_create();
 	window_set_window_handlers(s_main_window,(WindowHandlers){
-		.load = __load;
-		.unload = __unload;
+		.load = __load,
+		.unload = __unload,
 	});
 	window_stack_push(s_main_window,true);
 }
