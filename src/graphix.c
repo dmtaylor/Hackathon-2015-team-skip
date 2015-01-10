@@ -51,7 +51,7 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 		0,GCornerNone);
 
 	snprintf(health_buffer,HEALTH_BUFFER_SIZE,"%d/%d",
-		_curr_health,_max_health);
+		(int)_curr_health,(int)_max_health);
 }
 
 void __load(Window* window)
