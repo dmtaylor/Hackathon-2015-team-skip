@@ -7,6 +7,7 @@
 #define HEALTH_BAR_HEIGHT         20
 #define HEALTH_BAR_OUTLINE_WHITE   1
 #define HEALTH_BAR_OUTLINE_BLACK   1
+#define HEALTH_BUFFER_SIZE         32
 
 static Window *s_main_window;
 static Layer *s_canvas_layer;
@@ -14,6 +15,8 @@ static Layer *s_canvas_layer;
 uint32_t _max_health;
 uint32_t _curr_health;
 uint32_t _prev_dmg;
+
+char health_buffer[HEALTH_BUFFER_SIZE];
 
 void canvas_update_proc(Layer *this_layer, GContext *ctx)
 {
@@ -46,6 +49,9 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 	graphics_fill_rect(ctx,GRect(x_center - (HEALTH_BAR_LENGTH / 2),
 		HEALTH_BAR_MARGIN_TOP,rem_health,HEALTH_BAR_HEIGHT),
 		0,GCornerNone);
+
+	snprintf(health_buffer,HEALTH_BUFFER_SIZE,"%d/%d",
+		_curr_health,_max_health);
 }
 
 void __load(Window* window)
