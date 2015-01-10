@@ -7,6 +7,9 @@
 #define __DATA_H__
 
 #include <pebble.h>
+#define MAX_NAME_LEN 64
+#define MAX_ADJ_LEN 64
+#define MAX_LEVEL 0xffff
 
 typedef struct player_info{
 	double damage_mod;
@@ -16,7 +19,8 @@ typedef struct player_info{
 } player_info;
 
 typedef struct monster_info{
-	char* name;
+	char name[MAX_NAME_LEN];
+	char adj[MAX_ADJ_LEN];
 	uint32_t curr_health;
 	uint32_t max_health;
 	uint16_t level;
