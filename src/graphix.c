@@ -36,7 +36,7 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 	graphics_fill_rect(ctx,GRect(x_center - (HEALTH_BAR_LENGTH / 2)
 		- HEALTH_BAR_OUTLINE_WHITE,HEALTH_BAR_MARGIN_TOP
 		- HEALTH_BAR_OUTLINE_WHITE,HEALTH_BAR_LENGTH
-		+ 2*HEALTH_BAR_OUTLINE_WHITE,HEALTH_BAR_HEIGHT
+		+ HEALTH_BAR_OUTLINE_WHITE,HEALTH_BAR_HEIGHT
 		+ 2*HEALTH_BAR_OUTLINE_WHITE),0,GCornerNone);
 
 	// health fill
