@@ -1,5 +1,7 @@
 #include "pebble.h"
 
+  
+  // David was here
 #define MATH_PI 3.141592653589793238462
 #define NUM_DISCS 20
 #define DISC_DENSITY 0.25
