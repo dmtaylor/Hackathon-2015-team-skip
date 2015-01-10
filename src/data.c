@@ -10,7 +10,7 @@
 
 char* get_monster_name(uint16_t level){
 	if(level == 0){
-		fprintf(stderr, "Error: monster level invalid\n");
+		//fprintf(stderr, "Error: monster level invalid\n");
 		return NULL;
 	}
 	
@@ -66,7 +66,7 @@ char* get_monster_name(uint16_t level){
 
 char* get_monster_adj(uint16_t type){
 	if(type == 0){
-		fprintf(stderr, "Error: Monster type invalid\n");
+		//fprintf(stderr, "Error: Monster type invalid\n");
 		return NULL;
 	}
 	int adj_val;
@@ -87,7 +87,7 @@ char* get_monster_adj(uint16_t type){
 
 monster_info* gen_monster(uint16_t monster_level){
 	if(monster_level == 0){
-		fprintf(stderr, "Error: Invalid monster level\n");
+		//fprintf(stderr, "Error: Invalid monster level\n");
 		return NULL;
 	}
 	
@@ -109,7 +109,7 @@ monster_info* gen_monster(uint16_t monster_level){
 
 char monster_is_dead(monster_info* monster){
 	if(monster == NULL){
-		fprintf(stderr, "Error: Null monster pointer\n");
+		//fprintf(stderr, "Error: Null monster pointer\n");
 		return 255;
 	}
 	if(monster->curr_health == 0){
@@ -122,7 +122,7 @@ char monster_is_dead(monster_info* monster){
 
 void update_monster_health(monster_info* monster, uint32_t damage){
 	if(monster == NULL){
-		fprintf(stderr, "Error: Null monster to update health");
+		//fprintf(stderr, "Error: Null monster to update health");
 		return;
 	}
 	
@@ -137,7 +137,7 @@ void update_monster_health(monster_info* monster, uint32_t damage){
 
 char get_monster_type(monster_info* monster){
 	if(monster == NULL){
-		fprintf(stderr, "Error: Null monster to get type\n");
+		//fprintf(stderr, "Error: Null monster to get type\n");
 		return 0;
 	}
 	return monster->type;
@@ -145,11 +145,11 @@ char get_monster_type(monster_info* monster){
 
 void update_player_info(player_info* player, monster_info* monster){
 	if(player== NULL){
-		fprintf(stderr, "Error: player info null, cannot be updated\n");
+		//fprintf(stderr, "Error: player info null, cannot be updated\n");
 		return;
 	}
 	if(monster == NULL){
-		fprintf(stderr, "Error: monster info null, player cannot be updated\n");
+		//fprintf(stderr, "Error: monster info null, player cannot be updated\n");
 		return;
 	}
 	int new_xp = player->curr_xp + 2*monster->level;
@@ -168,7 +168,7 @@ void update_player_info(player_info* player, monster_info* monster){
 
 uint16_t get_player_level(player_info* player){
 	if(player == NULL){
-		fprintf(stderr, "Error: Null player to get level");
+		//fprintf(stderr, "Error: Null player to get level");
 		return 0;
 	}
 	return player->level;
@@ -176,7 +176,7 @@ uint16_t get_player_level(player_info* player){
 
 double get_damage_mod(player_info* player){
 	if(player == NULL){
-		fprintf(stderr, "Error: Null player to get mod");
+		//fprintf(stderr, "Error: Null player to get mod");
 		return 0;
 	}
 	return player->damage_mod;
