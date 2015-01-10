@@ -58,14 +58,16 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 		(int)_curr_health,(int)_max_health);
 
 	graphics_draw_text(ctx,health_buffer,
-		fonts_get_system_font(FONT_KEY_GOTHIC_14),GRect(x_center
+		fonts_get_system_font(FONT_KEY_GOTHIC_14),GRect(0,0,50,50),GTextOverflowModeTrailingEllipsis,
+		GTextAlignmentCenter,NULL);
+
+/*GRect(x_center
 		- (HEALTH_TEXT_WIDTH / 2),HEALTH_BAR_MARGIN_TOP
 		+ 3*HEALTH_BAR_OUTLINE_WHITE + 3*HEALTH_BAR_OUTLINE_BLACK
 		+ HEALTH_TEXT_MARGIN_TOP,x_center + (HEALTH_TEXT_WIDTH / 2),
 		HEALTH_BAR_MARGIN_TOP + 3*HEALTH_BAR_OUTLINE_WHITE
 		+ 3*HEALTH_BAR_OUTLINE_BLACK + HEALTH_TEXT_MARGIN_TOP
-		+ HEALTH_TEXT_HEIGHT),GTextOverflowModeTrailingEllipsis,
-		GTextAlignmentCenter,NULL);
+		+ HEALTH_TEXT_HEIGHT)*/
 }
 
 void __load(Window* window)
