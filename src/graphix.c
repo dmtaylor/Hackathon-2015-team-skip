@@ -9,9 +9,9 @@
 static Window *s_main_window;
 static Layer *s_canvas_layer;
 
-uint32_t max_health;
-uint32_t curr_health;
-uint32_t prev_dmg;
+uint32_t _max_health;
+uint32_t _curr_health;
+uint32_t _prev_dmg;
 
 void canvas_update_proc(Layer *this_layer, GContext *ctx)
 {
@@ -40,9 +40,9 @@ void __unload(Window* window)
 
 void graphix(uint32_t max_health , uint32_t curr_health , uint32_t prev_dmg)
 {
-	max_health = max_health;
-	curr_health = curr_health;
-	prev_dmg = prev_dmg;
+	_max_health = max_health;
+	_curr_health = curr_health;
+	_prev_dmg = prev_dmg;
 
 	s_main_window = window_create();
 	window_set_window_handlers(s_main_window,(WindowHandlers){
