@@ -56,10 +56,10 @@ char* get_monster_name(uint16_t level){
 	else if(level>13*(MAX_LEVEL/LEVEL_STEP) && level<=14*(MAX_LEVEL/LEVEL_STEP)){
 		
 	}
-	else if(level>14*(MAX_LEVEL/LEVEL_STEP) && level<=15*(MAX_LEVEL/LEVEL_STEP)){
+	else if(level > 14*(MAX_LEVEL/LEVEL_STEP) && level<=15*(MAX_LEVEL/LEVEL_STEP)){
 		
 	}
-	else if((level>15*(MAX_LEVEL/LEVEL_STEP)) && (level<=MAX_LEVEL)){
+	else if((level > 15*(MAX_LEVEL/LEVEL_STEP))){
 		
 	}
 	return NULL;
@@ -98,9 +98,10 @@ monster_info* gen_monster(uint16_t monster_level){
 		return NULL;
 	}
 	
-	monster->name = get_monster_name(monster_level);
+	
+	snprintf(monster->name, MAX_NAME_LEN, "%s", get_monster_name(monster_level));
 	monster->type = rand() % 4 + 1;
-	monster->adj = get_monster_adj(monster_level);
+	snprintf(monster->adj, MAX_ADJ_LEN, "%s", get_monster_adj(monster->type));
 	monster->level = monster_level;
 	monster->max_health = (10*monster_level) + (rand() % monster_level);
 	monster->curr_health = monster->max_health;
