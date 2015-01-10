@@ -31,7 +31,7 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 		HEALTH_BAR_HEIGHT + 2*HEALTH_BAR_OUTLINE_BLACK
 		+ 2*HEALTH_BAR_OUTLINE_WHITE),0,GCornerNone);
 
-	// white outline
+/*	// white outline
 	graphics_context_set_fill_color(ctx,GColorWhite);
 	graphics_fill_rect(ctx,GRect(x_center - (HEALTH_BAR_LENGTH / 2)
 		- HEALTH_BAR_OUTLINE_WHITE,HEALTH_BAR_MARGIN_TOP
@@ -51,7 +51,7 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 	graphics_context_set_fill_color(ctx,GColorWhite);
 	graphics_fill_rect(ctx,GRect(x_center + (HEALTH_BAR_LENGTH / 2)
 		- damage,HEALTH_BAR_MARGIN_TOP,x_center - 2
-		+ (HEALTH_BAR_LENGTH / 2), HEALTH_BAR_HEIGHT),0,GCornerNone);
+		+ (HEALTH_BAR_LENGTH / 2), HEALTH_BAR_HEIGHT),0,GCornerNone);*/
 
 }
 
