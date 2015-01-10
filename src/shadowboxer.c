@@ -3,12 +3,12 @@
 
 
 void init(){
-  //init code here
+  graphix(0,0,0);
   
 }
 
 void deinit(){
-  //destructor code here
+  ungraphix();
   
   
 }
