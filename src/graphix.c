@@ -9,8 +9,9 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 {
 	GRect bounds = layer_get_bounds(this_layer);
 	graphics_context_set_stroke_color(ctx,GColorBlack);
-	GPoint center = GPoint(bounds.size.w / 2, (bounds.size.h / 2));
-	graphics_fill_circle(ctx, center, 40);
+//	GPoint center = GPoint(bounds.size.w / 2, (bounds.size.h / 2));
+//	graphics_fill_circle(ctx, center, 40);
+	graphics_draw_rect(ctx,GRect(0,0,50,50));
 }
 
 void __load(Window* window)
