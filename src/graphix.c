@@ -62,7 +62,7 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 		fonts_get_system_font(FONT_KEY_GOTHIC_14),GRect(x_center
 		- (HEALTH_TEXT_WIDTH / 2),HEALTH_BAR_MARGIN_TOP
 		+ 3*HEALTH_BAR_OUTLINE_WHITE + 3*HEALTH_BAR_OUTLINE_BLACK
-		+ HEALTH_TEXT_MARGIN_TOP,HEALTH_TEXT_HEIGHT),
+		+ HEALTH_TEXT_MARGIN_TOP,HEALTH_TEXT_WIDTH,HEALTH_TEXT_HEIGHT),
 		GTextOverflowModeTrailingEllipsis,GTextAlignmentCenter,NULL);
 }
 
