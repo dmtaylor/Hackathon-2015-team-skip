@@ -4,10 +4,10 @@
 
 #define ACCEL_STEP_MS 50
 
-typedef struct Vec2d {
-  double x;
+typedef struct Vec4d {
+  Uint32 x;
   double y;
-} Vec2d;
+} Vec4d;
 
 
 static double next_radius = 3;
