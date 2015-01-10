@@ -7,7 +7,10 @@ static Layer *s_canvas_layer;
 
 void canvas_update_proc(Layer *this_layer, GContext *ctx)
 {
+	GRect bounds = layer_get_bounds(this_layer);
 	graphics_context_set_stroke_color(ctx,GColorBlack);
+
+	graphics_fill_circle(ctx, center, 40);
 }
 
 void __load(Window* window)
