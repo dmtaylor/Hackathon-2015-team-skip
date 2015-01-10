@@ -3,7 +3,7 @@
 #include "graphix.h"
 
 uint32_t test_max_health = 200;
-uint32_t test_curr_health = test_max_health;
+uint32_t test_curr_health = 200;
 
 void timer_test_handler()
 {
