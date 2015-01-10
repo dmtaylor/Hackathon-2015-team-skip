@@ -21,7 +21,7 @@ void __unload(Window* window)
 	layer_destroy(s_canvas_layer);
 }
 
-void graphix(uint32_t max_health , unit32_t curr_health , uint32_t prev_dmg)
+void graphix(uint32_t max_health , uint32_t curr_health , uint32_t prev_dmg)
 {
 	graphics_context_set_stroke_color(GColorBlack);
 	s_main_window = window_create();
