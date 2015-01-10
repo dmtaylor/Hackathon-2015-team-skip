@@ -50,7 +50,7 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 		/ ((double)_max_health)) * HEALTH_BAR_LENGTH);
 	graphics_context_set_fill_color(ctx,GColorWhite);
 	graphics_fill_rect(ctx,GRect(x_center + (HEALTH_BAR_LENGTH / 2)
-		- damage,HEALTH_BAR_MARGIN_TOP,x_center
+		- damage,HEALTH_BAR_MARGIN_TOP,x_center - 1
 		+ (HEALTH_BAR_LENGTH / 2), HEALTH_BAR_HEIGHT),0,GCornerNone);
 
 }
