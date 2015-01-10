@@ -8,7 +8,7 @@
 #include "data.h"
 #define LEVEL_STEP 16
 
-char[64] get_monster_name(uint16_t level){
+char[] get_monster_name(uint16_t level){
 	if(level == 0){
 		//fprintf(stderr, "Error: monster level invalid\n");
 		return NULL;
@@ -64,7 +64,7 @@ char[64] get_monster_name(uint16_t level){
 	}
 }
 
-char[64] get_monster_adj(uint16_t type){
+char[] get_monster_adj(uint16_t type){
 	if(type == 0){
 		//fprintf(stderr, "Error: Monster type invalid\n");
 		return NULL;
