@@ -2,9 +2,11 @@
 
 #include "graphix.h"
 
-#define HEALTH_BAR_MARGIN_TOP  10
-#define HEALTH_BAR_LENGTH     100
-#define HEALTH_BAR_HEIGHT      20
+#define HEALTH_BAR_MARGIN_TOP     10
+#define HEALTH_BAR_LENGTH        100
+#define HEALTH_BAR_HEIGHT         20
+#define HEALTH_BAR_OUTLINE_WHITE   1
+#define HEALTH_BAR_OUTLINE_BLACK   1
 
 static Window *s_main_window;
 static Layer *s_canvas_layer;
@@ -20,11 +22,32 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 	graphics_context_set_stroke_color(ctx,GColorBlack);
 
 	graphics_context_set_fill_color(ctx,GColorBlack);
-	graphics_fill_rect(ctx,GRect(x_center - (HEALTH_BAR_LENGTH / 2),HEALTH_BAR_MARGIN_TOP,HEALTH_BAR_LENGTH,HEALTH_BAR_HEIGHT),0,GCornerNone);
+	graphics_fill_rect(ctx,GRect(x_center - (HEALTH_BAR_LENGTH / 2)
+		- HEALTH_BAR_OUTLINE_BLACK - HEALTH_BAR_OUTLINE_WHITE,
+		HEALTH_BAR_MARGIN_TOP - HEALTH_BAR_OUTLINE_BLACK
+		- HEALTH_BAR_OUTLINE_WHITE,HEALTH_BAR_LENGTH
+		+ HEALTH_BAR_OUTLINE_BLACK + HEALTH_BAR_OUTLINE_WHITE,
+		HEALTH_BAR_HEIGHT + HEALTH_BAR_OUTLINE_BLACK
+		+ HEALTH_BAR_OUTLINE_WHITE),0,GCornerNone);
 
-	int16_t damage = (int)(((_max_health - _curr_health) / ((double)_max_health)) * HEALTH_BAR_LENGTH);
 	graphics_context_set_fill_color(ctx,GColorWhite);
-	graphics_fill_rect(ctx,GRect(x_center + (HEALTH_BAR_LENGTH / 2) - damage,HEALTH_BAR_MARGIN_TOP,x_center + (HEALTH_BAR_LENGTH / 2),HEALTH_BAR_HEIGHT),0,GCornerNone);
+	graphics_fill_rect(ctx,GRect(x_center - (HEALTH_BAR_LENGTH / 2)
+		- HEALTH_BAR_OUTLINE_WHITE,HEALTH_BAR_MARGIN_TOP
+		- HEALTH_BAR_OUTLINE_WHITE,HEALTH_BAR_LENGTH
+		+ HEALTH_BAR_OUTLINE_WHITE,HEALTH_BAR_HEIGHT
+		+ HEALTH_BAR_OUTLINE_WHITE),0,GCornerNone);
+
+	graphics_context_set_fill_color(ctx,GColorBlack);
+	graphics_fill_rect(ctx,GRect(x_center - (HEALTH_BAR_LENGTH / 2),
+		HEALTH_BAR_MARGIN_TOP,HEALTH_BAR_LENGTH,HEALTH_BAR_HEIGHT),
+		0,GCornerNone);
+
+	int16_t damage = (int)(((_max_health - _curr_health)
+		/ ((double)_max_health)) * HEALTH_BAR_LENGTH);
+	graphics_context_set_fill_color(ctx,GColorWhite);
+	graphics_fill_rect(ctx,GRect(x_center + (HEALTH_BAR_LENGTH / 2)
+		- damage,HEALTH_BAR_MARGIN_TOP,x_center + (HEALTH_BAR_LENGTH / 2),
+		HEALTH_BAR_HEIGHT),0,GCornerNone);
 
 }
 
