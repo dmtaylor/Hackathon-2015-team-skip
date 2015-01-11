@@ -63,7 +63,7 @@ char* get_monster_name(uint16_t level){
 				name = "Gnoll";
 				break;
 			case 5:
-				name = "Hobgoblin";
+				name = "Crab-People";
 				break;
 			case 6:
 				name = "Zombie";
