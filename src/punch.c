@@ -11,8 +11,6 @@ typedef int Vec4d[VEC_SIZE];
 
 //static GRect window_frame;
 
-static AppTimer *timer;
-
 //static DataLoggingSessionRef logging_session;
 
 static Vec4d prev_data;
@@ -121,7 +119,6 @@ static void reg_callback(void *data){
    //APP_LOG(APP_LOG_LEVEL_INFO,"T: %d", p_type);
 }
 /* IMPORTANT CODE TO LOOK AT
-  timer = app_timer_register(ACCEL_STEP_MS, reg_callback, NULL);
   accel_data_service_subscribe(0, NULL);
   compass_service_subscribe(NULL);
   timer = app_timer_register(ACCEL_STEP_MS, reg_callback, NULL);

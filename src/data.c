@@ -442,7 +442,7 @@ char* get_monster_name(uint16_t level){
 				name = "Cthulhu";
 				break;
 			case 6:
-				name = "Nylarhotep";
+				name = "Mike Tyson";
 				break;
 			default:
 				break;

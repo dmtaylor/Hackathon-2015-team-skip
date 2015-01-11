@@ -10,7 +10,12 @@ player_info* player;
 monster_info* monster;
 uint16_t game_level;
 
+static AppTimer *timer;
+
 void init(){
+	
+	
+	timer = app_timer_register(ACCEL_STEP_MS, timer_callback, NULL);
     
     srand(time(NULL));
     
