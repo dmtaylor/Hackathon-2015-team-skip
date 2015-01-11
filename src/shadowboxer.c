@@ -8,7 +8,8 @@ uint32_t test_curr_health = 200;
 void timer_test_handler()
 {
 	graphix(test_max_health,test_curr_health,0);
-	app_timer_register(100,timer_test_handler,NULL);
+	app_timer_register(500,timer_test_handler,NULL);
+	test_curr_health--;
 }
 
 void init(){
