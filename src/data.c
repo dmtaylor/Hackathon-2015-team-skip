@@ -550,7 +550,7 @@ monster_info* gen_monster(uint16_t monster_level){
 	
 	
 	snprintf(monster->name, MAX_NAME_LEN, "%s", get_monster_name(monster_level));
-	monster->type = rand() % 4 + 1;
+	monster->type = rand() % 3 + 1;
 	snprintf(monster->adj, MAX_ADJ_LEN, "%s", get_monster_adj(monster->type));
 	monster->level = monster_level;
 	monster->max_health = (10*monster_level) + (rand() % monster_level);
