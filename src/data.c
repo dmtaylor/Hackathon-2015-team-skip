@@ -10,7 +10,7 @@
 
 char* get_monster_name(uint16_t level){
 	if(level == 0){
-		app_log(APP_LOG_LEVEL_ERROR, data.c, 13,
+		app_log(APP_LOG_LEVEL_ERROR, "data.c", 13,
 			"Error: Monster level invalid\n");
 		return NULL;
 	}
@@ -453,7 +453,7 @@ char* get_monster_name(uint16_t level){
 
 char* get_monster_adj(uint16_t type){
 	if(type == 0){
-		app_log(APP_LOG_LEVEL_ERROR, data.c, 455,
+		app_log(APP_LOG_LEVEL_ERROR, "data.c", 455,
 			"Error: Monster type invalid\n");
 		return NULL;
 	}
@@ -536,14 +536,14 @@ char* get_monster_adj(uint16_t type){
 
 monster_info* gen_monster(uint16_t monster_level){
 	if(monster_level == 0){
-		app_log(APP_LOG_LEVEL_ERROR, data.c, 538,
+		app_log(APP_LOG_LEVEL_ERROR, "data.c", 538,
 			"Error: Invalid monster level\n");
 		return NULL;
 	}
 	
 	monster_info* monster = malloc(sizeof(monster_info));
 	if (monster == NULL){
-		app_log(APP_LOG_LEVEL_ERROR, data.c, 545,
+		app_log(APP_LOG_LEVEL_ERROR, "data.c", 545,
 			"Error: malloc failed\n");
 		return NULL;
 	}
@@ -561,7 +561,7 @@ monster_info* gen_monster(uint16_t monster_level){
 
 char monster_is_dead(monster_info* monster){
 	if(monster == NULL){
-		app_log(APP_LOG_LEVEL_ERROR, data.c, 563,
+		app_log(APP_LOG_LEVEL_ERROR, "data.c", 563,
 			"Error: Null monster pointer\n");
 		return 255;
 	}
@@ -575,7 +575,7 @@ char monster_is_dead(monster_info* monster){
 
 void update_monster_health(monster_info* monster, uint32_t damage){
 	if(monster == NULL){
-		app_log(APP_LOG_LEVEL_ERROR, data.c, 577,
+		app_log(APP_LOG_LEVEL_ERROR, "data.c", 577,
 			"Error: Null monster to update health\n");
 		return;
 	}
@@ -591,7 +591,7 @@ void update_monster_health(monster_info* monster, uint32_t damage){
 
 char get_monster_type(monster_info* monster){
 	if(monster == NULL){
-		app_log(APP_LOG_LEVEL_ERROR, data.c, 593,
+		app_log(APP_LOG_LEVEL_ERROR, "data.c", 593,
 			"Error: Null monster to get type\n");
 		return 0;
 	}
@@ -601,7 +601,7 @@ char get_monster_type(monster_info* monster){
 player_info* build_player(void){
 	player_info* player = malloc(sizeof(player_info));
 	if(player == NULL){
-		app_log(APP_LOG_LEVEL_ERROR, data.c, 603,
+		app_log(APP_LOG_LEVEL_ERROR, "data.c", 603,
 			"Error: Player malloc failed\n");
 		return NULL;
 	}
@@ -614,12 +614,12 @@ player_info* build_player(void){
 
 void update_player_info(player_info* player, monster_info* monster){
 	if(player== NULL){
-		app_log(APP_LOG_LEVEL_ERROR, data.c, 617,
+		app_log(APP_LOG_LEVEL_ERROR, "data.c", 617,
 			"Error: Player info null, cannot be updated\n");
 		return;
 	}
 	if(monster == NULL){
-		app_log(APP_LOG_LEVEL_ERROR, data.c, 621,
+		app_log(APP_LOG_LEVEL_ERROR, "data.c", 621,
 			"Error: Monster info null, cannot be updated\n");
 		return;
 	}
@@ -640,7 +640,7 @@ void update_player_info(player_info* player, monster_info* monster){
 
 uint16_t get_player_level(player_info* player){
 	if(player == NULL){
-		app_log(APP_LOG_LEVEL_ERROR, data.c, 642,
+		app_log(APP_LOG_LEVEL_ERROR, "data.c", 642,
 			"Error: Null player to get level\n");
 		return 0;
 	}
@@ -649,7 +649,7 @@ uint16_t get_player_level(player_info* player){
 
 double get_damage_mod(player_info* player){
 	if(player == NULL){
-		app_log(APP_LOG_LEVEL_ERROR, data.c, 651,
+		app_log(APP_LOG_LEVEL_ERROR, "data.c", 651,
 			"Error: Null player to get mod\n");
 		return 0;
 	}
