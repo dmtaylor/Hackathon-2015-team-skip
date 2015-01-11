@@ -21,9 +21,12 @@ void timer_callback(void* data){
   
   if( punch_Recent ){
 	  roll_d4();
-	  damage_dealt = (uint32_t)((player->damage_mod) * punch_d4);
+	  
 	  if(get_monster_type(monster) == punch_Recent){
-	  	damage_dealt += (player->damage_mod) * punch_d10;
+	  	damage_dealt = (uint32_t)((player->damage_mod) * punch_d10);
+	  }
+	  else{
+		  damage_dealt = (uint32_t)((player->damage_mod) * punch_d4);
 	  }
 	  update_monster_health(monster, damage_dealt);
 	  if(monster_is_dead(monster)){
@@ -40,8 +43,9 @@ void timer_callback(void* data){
   }
 
   //APP_LOG(APP_LOG_LEVEL_INFO, "D: %lu; P: %d, %d; T: %d", damage_dealt, punch_d4, punch_d10, punch_Recent);
-
+	
 	if(damage_dealt){
+		ungraphix();
 		graphix(monster->max_health,monster->curr_health,damage_dealt,
 			monster->adj,monster->name,get_monster_type(monster));
 	}
