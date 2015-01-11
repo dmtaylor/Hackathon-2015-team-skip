@@ -76,7 +76,7 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 		snprintf(prev_dmg_buffer,PREV_DMG_BUFFER_SIZE,"-%d!",
 			(int)_prev_dmg);
 		graphics_draw_text(ctx,prev_dmg_buffer,
-			fonts_get_system_font(FONT_KEY_GOTHIC_24),GRect(x_center
+			fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD),GRect(x_center
 			- (PREV_DMG_WIDTH / 2),HEALTH_BAR_MARGIN_TOP
 			+ 3*HEALTH_BAR_OUTLINE_WHITE + 3*HEALTH_BAR_OUTLINE_BLACK
 			+ HEALTH_TEXT_MARGIN_TOP + HEALTH_TEXT_HEIGHT,PREV_DMG_WIDTH,
