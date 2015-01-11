@@ -26,7 +26,7 @@ static int lreturn=false;
 static int rreturn=false;
 
 //returns type of punch; 1=jab, 2=uppercut
-static int getPunch(){
+int getPunch(){
   int p_type = 3;
   if( max_acc[1] < -1200 ){
     return p_type;
@@ -122,7 +122,7 @@ int punch_callback(void *data) {
   return p_type;
 }
 
-static void reg_callback(void *data){
+void reg_callback(void *data){
   int p_type = punch_callback(data);
   if(p_type == 1) vibes_double_pulse();
   else if (p_type == 2) vibes_long_pulse();
