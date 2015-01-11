@@ -11,33 +11,64 @@ monster_info* monster;
 uint16_t game_level;
 
 void init(){
-	
-	/*// Loads stored game data
-	if(persist_exists(PLAYER_STORE)){
-		persist_read_data(PLAYER_STORE, player, sizeof(player_info));
-	}
-	else{
-		player = build_player();
-	}*/
-	
-	// testing reading and writing
-	player = build_player();
-	
-	if(player==NULL){
-		exit(255);
-	}
-	game_level = player->curr_level;
-	
-	/*if(persist_exists(MONSTER_STORE)){
-		persist_read_data(MONSTER_STORE, monster, sizeof(monster_info));
-	}
-	else{
-		monster = gen_monster(game_level);
-	}*/
-	
-	monster = gen_monster(game_level);
-	
-	graphix(200,200,50,"foo","bar");
+    
+    
+    // Loads stored game data
+    if(persist_exists(PLAYER_STORE)){
+        player = malloc(sizeof(player_info));
+        if(player == NULL){
+            app_log(APP_LOG_LEVEL_ERROR, "shadowboxer.c", 20,
+				"Error: Player malloc failed\n");
+            exit(255);
+        }
+        persist_read_data(PLAYER_STORE, player, sizeof(player_info));
+    }
+    else{
+        player = build_player();
+        if(player == NULL){
+            app_log(APP_LOG_LEVEL_ERROR, "shadowboxer.c", 30,
+				"Error: Player create failed\n");
+            exit(255);
+        }
+    }
+    
+    // testing reading and writing
+    //player = build_player();
+    
+    if(player==NULL){
+		app_log(APP_LOG_LEVEL_ERROR, "shadowboxer.c", 34,
+				"Error: Player malloc failed\n");
+        exit(255);
+    }
+    game_level = player->curr_level;
+    
+    if(persist_exists(MONSTER_STORE)){
+        monster = malloc(sizeof(monster_info));
+        if(monster == NULL){
+            app_log(APP_LOG_LEVEL_ERROR, "shadowboxer.c", 42,
+				"Error: Monster malloc failed\n");
+            exit(255);
+        }
+        persist_read_data(MONSTER_STORE, monster, sizeof(monster_info));
+    }
+    else{
+        monster = gen_monster(game_level);
+        if(monster == NULL){
+            app_log(APP_LOG_LEVEL_ERROR, "shadowboxer.c", 50,
+				"Error: Monster malloc failed\n");
+            exit(255);
+        }
+    }
+    
+    if(monster == NULL){
+        app_log(APP_LOG_LEVEL_ERROR, "shadowboxer.c", 57,
+				"Error: Monster malloc failed\n");
+        exit(255);
+    }
+    
+    //monster = gen_monster(game_level);
+    
+    graphix(200,200,50,"foo","bar");
 }
 
 void deinit(){
