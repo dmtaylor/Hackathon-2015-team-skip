@@ -18,6 +18,10 @@
 #define PREV_DMG_HEIGHT           20
 #define PREV_DMG_MARGIN_TOP       10
 
+#define NAME_BUFFER_SIZE         128
+#define NAME_WIDTH               bounds.size.w
+#define NAME_HEIGHT               20
+
 static Window *s_main_window;
 static Layer *s_canvas_layer;
 
@@ -29,6 +33,7 @@ char* _name;
 
 char health_buffer[HEALTH_BUFFER_SIZE];
 char prev_dmg_buffer[PREV_DMG_BUFFER_SIZE];
+char name_buffer[NAME_BUFFER_SIZE];
 
 void canvas_update_proc(Layer *this_layer, GContext *ctx)
 {
@@ -85,6 +90,13 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 			PREV_DMG_HEIGHT),GTextOverflowModeTrailingEllipsis,
 			GTextAlignmentCenter,NULL);
 	}
+
+	snprintf(name_buffer,NAME_BUFFER_SIZE,"%s %s",_adj,_name);
+	graphics_draw_text(ctx,name_buffer,
+		fonts_get_system_font(FONT_KEY_GOTHIC_24),GRect(x_center
+		- (NAME_WIDTH / 2),bounds.size.h - NAME_HEIGHT,NAME_WIDTH,
+		bounds.size.h),GTextOverflowModeTrailingEllipsis,
+		GTextAlignmentCenter,NULL);
 }
 
 void __load(Window* window)
