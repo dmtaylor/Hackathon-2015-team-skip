@@ -68,8 +68,8 @@ void draw_punch(Layer *this_layer , GContext* ctx , enum punch_type punch_type)
 			graphics_fill_rect(ctx,GRect(bounds.size.w - 14,y_center - 15,
 				5,10),0,GCornerNone);
 
-			graphics_draw_line(ctx,GPoint(bounds.size.w - 28,y_center - 15),
-				GPoint(bounds.size.w - 15,y_center - 15));
+			graphics_draw_line(ctx,GPoint(bounds.size.w - 28,y_center - 7),
+				GPoint(bounds.size.w - 15,y_center - 7));
 			break;
 		case UPPERCUT:
 			break;
