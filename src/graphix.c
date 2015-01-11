@@ -43,10 +43,19 @@ void draw_punch(Layer *this_layer , GContext* ctx , enum punch_type punch_type)
 	int16_t y_center = bounds.size.h / 2;
 	switch(punch_type)
 	{
+		case ERROR:
+			break;
 		case JAB:
 			graphics_context_set_fill_color(ctx,GColorBlack);
 			graphics_fill_rect(ctx,GRect(bounds.size.w - 15,y_center - 4,
 				11,8),0,GCornerNone);
+			break;
+		case HOOK:
+			break;
+		case UPPERCUT:
+			break;
+		case SPEEDBAG:
+			break;
 	}
 }
 
