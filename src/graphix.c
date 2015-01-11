@@ -80,6 +80,9 @@ void draw_punch(Layer *this_layer , GContext* ctx , enum punch_type punch_type)
 				30,20),0,GCornerNone);
 			graphics_fill_rect(ctx,GRect(bounds.size.w - 40,y_center - 16,
 				10,5),0,GCornerNone);
+
+			graphics_draw_line(ctx,GPoint(bounds.size.w - 32,y_center + 3),
+				GPoint(bounds.size.w - 32,y_center - 10));
 			break;
 		case SPEEDBAG:
 			break;
