@@ -29,7 +29,7 @@ void init(){
 		player = gen_monster(game_level);
 	}
 	
-	graphix(200,200,0);
+	graphix(200,200,50);
 }
 
 void deinit(){
