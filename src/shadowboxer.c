@@ -29,7 +29,7 @@ void timer_callback(void* data){
 		  damage_dealt = (uint32_t)((player->damage_mod) * punch_d4);
 	  }
 	  update_monster_health(monster, damage_dealt);
-	  if(monster_is_dead(monster)){
+	  if(monsterReady() && monster_is_dead(monster)){
 		  update_player_info(player, monster);
 		  game_level = player->curr_level;
 		  free(monster);

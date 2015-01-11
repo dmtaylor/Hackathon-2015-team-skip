@@ -6,7 +6,7 @@
 #define _S_THRESHOLD_ 2000000
 #define _E_THRESHOLD_ 10000
 #define _X_THRESHOLD_ 1200
-#define _NEED_STEPS_ 100000000
+#define _NEED_STEPS_ 100
 
 typedef int Vec4d[VEC_SIZE];
 
