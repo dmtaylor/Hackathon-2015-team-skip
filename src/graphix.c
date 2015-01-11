@@ -96,7 +96,7 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 	graphics_draw_text(ctx,name_buffer,
 		fonts_get_system_font(FONT_KEY_GOTHIC_24),GRect(x_center
 		- (NAME_WIDTH / 2),bounds.size.h - NAME_HEIGHT - NAME_MARGIN_BOTTOM,
-		NAME_WIDTH,NAME_HEIGHT),GTextOverflowModeTrailingEllipsis,
+		NAME_WIDTH,NAME_HEIGHT),GTextOverflowModeWordWrap,
 		GTextAlignmentCenter,NULL);
 }
 
