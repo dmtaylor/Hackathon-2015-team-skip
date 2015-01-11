@@ -7,6 +7,8 @@
 #define __PUNCH_H__
 
 #include "pebble.h"
+  
+#define GAME_UPDATE_MS 50
 
 static int punch_Recent = 0;
 static int punch_d20 = 0;

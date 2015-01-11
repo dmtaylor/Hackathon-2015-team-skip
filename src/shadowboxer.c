@@ -11,6 +11,8 @@ player_info* player;
 monster_info* monster;
 uint16_t game_level;
 
+static AppTimer *timer;
+
 void timer_callback(void* data){
 	// TODO
 }
@@ -72,6 +74,7 @@ void init(){
 	
 	
 	// temp code
+  timer = app_timer_register(GAME_UPDATE_MS, timer_callback, NULL);
 	graphix(200,200,50,"Super Powerful Very Angry","Monster with a Very Long Name",UPPERCUT);
 
 }

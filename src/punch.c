@@ -1,6 +1,6 @@
 #include "pebble.h"
+#include "punch.h"
 
-#define ACCEL_STEP_MS 50
 #define VEC_SIZE 4
   
 #define _S_THRESHOLD_ 2000000
@@ -24,10 +24,6 @@ static int laction=false;
 static int raction=false;
 static int lreturn=false;
 static int rreturn=false;
-
-static int punch_Recent = 0;
-static int punch_d10 = 0;
-static int punch_d4 = 0;
 
 //returns type of punch; 1=jab, 2=uppercut
 static int getPunch(){
@@ -128,13 +124,17 @@ static void reg_callback(void *data){
   else if (p_type == 3) vibes_long_pulse();
   */
    //APP_LOG(APP_LOG_LEVEL_INFO,"T: %d", p_type);
-  pch_timer = app_timer_register(ACCEL_STEP_MS, reg_callback, NULL);
+  pch_timer = app_timer_register(GAME_UPDATE_MS, reg_callback, NULL);
 }
 
 static void pch_init(){
+  punch_Recent = 0;
+  punch_d10 = 0;
+  punch_d4 = 0;
+  
   accel_data_service_subscribe(0, NULL);
   compass_service_subscribe(NULL);
-  pch_timer = app_timer_register(ACCEL_STEP_MS, reg_callback, NULL);
+  pch_timer = app_timer_register(GAME_UPDATE_MS, reg_callback, NULL);
 }
 
 static void pch_dinit(){
