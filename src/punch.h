@@ -14,15 +14,15 @@ static int punch_Recent = 0;
 static int punch_d10 = 0;
 static int punch_d4 = 0;
 
-static int punch_callback(void *data);
+int punch_callback(void *data);
 
-static void reg_callback(void *data);
+void reg_callback(void *data);
 
 void pch_init();
 
 void pch_dinit();
 
-static void roll_d4();
+void roll_d4();
 
 #endif
 
