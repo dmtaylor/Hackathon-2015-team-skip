@@ -195,5 +195,5 @@ void graphix(uint32_t max_health , uint32_t curr_health , uint32_t prev_dmg ,
 void ungraphix()
 {
 	window_destroy(s_main_window);
-        window_stack_pop(s_main_window,false);
+        window_stack_pop(false);
 }
