@@ -126,6 +126,7 @@ int punch_callback(void *data) {
   (prev_data)[3] = comp_head;
   //APP_LOG(APP_LOG_LEVEL_INFO, "M: %d", max_acc[0]);
   //APP_LOG(APP_LOG_LEVEL_INFO,"A: %d, %d, %d; M: %d; T: %d", accel.x, accel.y, accel.z, comp_head, p_type);
+  roll_d4();
   return p_type;
 }
 
