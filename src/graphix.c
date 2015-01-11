@@ -18,6 +18,11 @@
 #define PREV_DMG_HEIGHT           20
 #define PREV_DMG_MARGIN_TOP       10
 
+#define NAME_BUFFER_SIZE         128
+#define NAME_WIDTH               bounds.size.w
+#define NAME_HEIGHT               40
+#define NAME_MARGIN_BOTTOM        15
+
 static Window *s_main_window;
 static Layer *s_canvas_layer;
 
@@ -26,15 +31,49 @@ uint32_t _curr_health;
 uint32_t _prev_dmg;
 char* _adj;
 char* _name;
+enum punch_type _punch_type;
 
 char health_buffer[HEALTH_BUFFER_SIZE];
 char prev_dmg_buffer[PREV_DMG_BUFFER_SIZE];
+char name_buffer[NAME_BUFFER_SIZE];
+
+void draw_punch(Layer *this_layer , GContext* ctx , enum punch_type punch_type)
+{
+	GRect bounds = layer_get_bounds(this_layer);
+	int16_t y_center = bounds.size.h / 2;
+	switch(punch_type)
+	{
+		case ERROR:
+			break;
+		case JAB:
+			graphics_context_set_fill_color(ctx,GColorBlack);
+			graphics_fill_rect(ctx,GRect(bounds.size.w - 40,y_center - 10,
+				30,20),0,GCornerNone);
+			graphics_fill_rect(ctx,GRect(bounds.size.w - 20,y_center + 11,
+				10,5),0,GCornerNone);
+			graphics_context_set_stroke_color(ctx,GColorWhite);
+			graphics_draw_line(ctx,GPoint(bounds.size.w - 33,y_center-3),
+				GPoint(bounds.size.w - 33,y_center + 10));
+			graphics_draw_line(ctx,GPoint(bounds.size.w - 26,y_center-3),
+				GPoint(bounds.size.w - 26,y_center + 10));
+			graphics_draw_line(ctx,GPoint(bounds.size.w - 18,y_center-3),
+				GPoint(bounds.size.w - 18,y_center + 10));
+			break;
+		case HOOK:
+			break;
+		case UPPERCUT:
+			break;
+		case SPEEDBAG:
+			break;
+	}
+}
 
 void canvas_update_proc(Layer *this_layer, GContext *ctx)
 {
 	GRect bounds = layer_get_bounds(this_layer);
 	int16_t x_center = bounds.size.w / 2;
-	graphics_context_set_stroke_color(ctx,GColorBlack);
+
+	draw_punch(this_layer,ctx,_punch_type);
 
 	// black outline
 	graphics_context_set_fill_color(ctx,GColorBlack);
@@ -85,6 +124,13 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 			PREV_DMG_HEIGHT),GTextOverflowModeTrailingEllipsis,
 			GTextAlignmentCenter,NULL);
 	}
+
+	snprintf(name_buffer,NAME_BUFFER_SIZE,"%s %s",_adj,_name);
+	graphics_draw_text(ctx,name_buffer,
+		fonts_get_system_font(FONT_KEY_GOTHIC_24),GRect(x_center
+		- (NAME_WIDTH / 2),bounds.size.h - NAME_HEIGHT - NAME_MARGIN_BOTTOM,
+		NAME_WIDTH,NAME_HEIGHT),GTextOverflowModeWordWrap,
+		GTextAlignmentCenter,NULL);
 }
 
 void __load(Window* window)
@@ -103,13 +149,15 @@ void __unload(Window* window)
 	layer_destroy(s_canvas_layer);
 }
 
-void graphix(uint32_t max_health , uint32_t curr_health , uint32_t prev_dmg , char* adj, char* name)
+void graphix(uint32_t max_health , uint32_t curr_health , uint32_t prev_dmg ,
+	char* adj, char* name , enum punch_type punch_type)
 {
 	_max_health = max_health;
 	_curr_health = curr_health;
 	_prev_dmg = prev_dmg;
 	_adj = adj;
 	_name = name;
+	_punch_type = punch_type;
 
 	s_main_window = window_create();
 	window_set_window_handlers(s_main_window,(WindowHandlers){

@@ -3,7 +3,10 @@
 
 #include <pebble.h>
 
-void graphix(uint32_t max_health , uint32_t curr_health , uint32_t prev_dmg, char* adj, char* name);
+#include "punch_type.h"
+
+void graphix(uint32_t max_health , uint32_t curr_health , uint32_t prev_dmg ,
+	char* adj , char* name , enum punch_type punch_type);
 
 void ungraphix();
 
