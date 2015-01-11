@@ -26,7 +26,7 @@ static int lreturn=false;
 static int rreturn=false;
 
 static int punch_Recent = 0;
-static int punch_d20 = 0;
+static int punch_d10 = 0;
 static int punch_d4 = 0;
 
 //returns type of punch; 1=jab, 2=uppercut

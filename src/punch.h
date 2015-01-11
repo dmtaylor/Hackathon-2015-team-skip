@@ -16,5 +16,9 @@ static int punch_callback(void *data);
 
 static void reg_callback(void *data);
 
+static void pch_init();
+
+static void pch_dinit();
+
 #endif
 
