@@ -34,7 +34,7 @@ void init(){
 	
 	monster = gen_monster(game_level);
 	
-	graphix(200,200,50,"foo","bar");
+	graphix(200,200,50,"Super Powerful Very Angry","Monster with a Very Long Name");
 }
 
 void deinit(){
