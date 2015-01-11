@@ -33,8 +33,11 @@ void timer_callback(void* data){
 			return;
 		}
 	}
-	graphix(monster->max_health,monster->curr_health,damage_dealt,
+
+	if(damage_dealt){
+		graphix(monster->max_health,monster->curr_health,damage_dealt,
 			monster->adj,monster->name,get_monster_type(monster));
+	}
 	
 	timer = app_timer_register(GAME_UPDATE_MS, timer_callback, NULL);
 }
