@@ -26,7 +26,7 @@ void init(){
 		persist_read_data(MONSTER_STORE, monster, sizeof(monster_info));
 	}
 	else{
-		player = gen_monster(game_level);
+		monster = gen_monster(game_level);
 	}
 	
 	graphix(200,200,50);
