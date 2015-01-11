@@ -34,7 +34,7 @@ void init(){
 	
 	monster = gen_monster(game_level);
 	
-	graphix(200,200,50);
+	graphix(200,200,50,"foo","bar");
 }
 
 void deinit(){
