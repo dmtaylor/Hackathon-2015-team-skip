@@ -19,16 +19,14 @@ void init(){
         if(player == NULL){
             app_log(APP_LOG_LEVEL_ERROR, "shadowboxer.c", 20,
 				"Error: Player malloc failed\n");
-            exit(255);
         }
         persist_read_data(PLAYER_STORE, player, sizeof(player_info));
     }
     else{
         player = build_player();
         if(player == NULL){
-            app_log(APP_LOG_LEVEL_ERROR, "shadowboxer.c", 30,
+            app_log(APP_LOG_LEVEL_ERROR, "shadowboxer.c", 28,
 				"Error: Player create failed\n");
-            exit(255);
         }
     }
     
@@ -36,34 +34,30 @@ void init(){
     //player = build_player();
     
     if(player==NULL){
-		app_log(APP_LOG_LEVEL_ERROR, "shadowboxer.c", 34,
+		app_log(APP_LOG_LEVEL_ERROR, "shadowboxer.c", 37,
 				"Error: Player malloc failed\n");
-        exit(255);
     }
     game_level = player->curr_level;
     
     if(persist_exists(MONSTER_STORE)){
         monster = malloc(sizeof(monster_info));
         if(monster == NULL){
-            app_log(APP_LOG_LEVEL_ERROR, "shadowboxer.c", 42,
+            app_log(APP_LOG_LEVEL_ERROR, "shadowboxer.c", 45,
 				"Error: Monster malloc failed\n");
-            exit(255);
         }
         persist_read_data(MONSTER_STORE, monster, sizeof(monster_info));
     }
     else{
         monster = gen_monster(game_level);
         if(monster == NULL){
-            app_log(APP_LOG_LEVEL_ERROR, "shadowboxer.c", 50,
+            app_log(APP_LOG_LEVEL_ERROR, "shadowboxer.c", 53,
 				"Error: Monster malloc failed\n");
-            exit(255);
         }
     }
     
     if(monster == NULL){
-        app_log(APP_LOG_LEVEL_ERROR, "shadowboxer.c", 57,
+        app_log(APP_LOG_LEVEL_ERROR, "shadowboxer.c", 59,
 				"Error: Monster malloc failed\n");
-        exit(255);
     }
     
     //monster = gen_monster(game_level);
