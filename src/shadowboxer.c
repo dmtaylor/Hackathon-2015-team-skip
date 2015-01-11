@@ -16,6 +16,7 @@ static AppTimer *timer;
 void timer_callback(void* data){
 	// TODO
   
+	roll_d4();
 	uint32_t damage_dealt = (uint32_t)((player->damage_mod) * punch_d4);
 	if(get_monster_type(monster) == punch_Recent){
 		damage_dealt += (player->damage_mod) * punch_d10;
