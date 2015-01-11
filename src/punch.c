@@ -28,7 +28,7 @@ static int rreturn=false;
 //returns type of punch; 1=jab, 2=uppercut
 int getPunch(){
   int p_type = 3;
-  if( max_acc[1] < -1200 ){
+  if( max_acc[1] < -1700 ){
     return p_type;
   }
   p_type = 2;
