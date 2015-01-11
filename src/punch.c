@@ -138,7 +138,6 @@ static void reg_callback(void *data){
    //APP_LOG(APP_LOG_LEVEL_INFO,"T: %d", p_type);
 
   punch_Recent = p_type;
-  punch_
 	
   pch_timer = app_timer_register(GAME_UPDATE_MS, reg_callback, NULL);
 }
