@@ -31,6 +31,7 @@ uint32_t _curr_health;
 uint32_t _prev_dmg;
 char* _adj;
 char* _name;
+enum punch_type _punch_type;
 
 char health_buffer[HEALTH_BUFFER_SIZE];
 char prev_dmg_buffer[PREV_DMG_BUFFER_SIZE];
@@ -116,13 +117,15 @@ void __unload(Window* window)
 	layer_destroy(s_canvas_layer);
 }
 
-void graphix(uint32_t max_health , uint32_t curr_health , uint32_t prev_dmg , char* adj, char* name)
+void graphix(uint32_t max_health , uint32_t curr_health , uint32_t prev_dmg ,
+	char* adj, char* name , enum punch_type punch_type)
 {
 	_max_health = max_health;
 	_curr_health = curr_health;
 	_prev_dmg = prev_dmg;
 	_adj = adj;
 	_name = name;
+	_punch_type = punch_type;
 
 	s_main_window = window_create();
 	window_set_window_handlers(s_main_window,(WindowHandlers){
