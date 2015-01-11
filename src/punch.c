@@ -130,11 +130,11 @@ static int punch_callback(void *data) {
 }
 
 static void reg_callback(void *data){
-  int p_type = punch_callback(data);/*
+  int p_type = punch_callback(data);
   if(p_type == 1) vibes_short_pulse();
   else if (p_type == 2) vibes_double_pulse();
   else if (p_type == 3) vibes_long_pulse();
-  */
+  
    //APP_LOG(APP_LOG_LEVEL_INFO,"T: %d", p_type);
 
   punch_Recent = p_type;
