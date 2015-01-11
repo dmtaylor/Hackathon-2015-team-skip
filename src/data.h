@@ -43,6 +43,9 @@ void update_monster_health(monster_info* monster, uint32_t damage);
 // get_monster_type: returns the type for the monster
 char get_monster_type(monster_info* monster);
 
+// build_player: Creates a new 
+player_info* build_player(void);
+
 // update_player_info: Updates player info when monster is killed
 void update_player_info(player_info* player, monster_info* monster);
 
