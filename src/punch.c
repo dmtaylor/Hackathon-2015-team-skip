@@ -6,8 +6,7 @@
 #define _S_THRESHOLD_ 2000000
 #define _E_THRESHOLD_ 10000
 #define _X_THRESHOLD_ 1200
-
-static AppTimer *pch_timer;
+#define _NEED_STEPS_ 100
 
 typedef int Vec4d[VEC_SIZE];
 
@@ -25,18 +24,28 @@ static int raction=false;
 static int lreturn=false;
 static int rreturn=false;
 
+ int curr_walk;
+
+int monsterReady(){
+  if(++curr_walk >= _NEED_STEPS_){
+    curr_walk -= _NEED_STEPS_;
+    return true;
+  } 
+  return false;
+}
+
 //returns type of punch; 1=jab, 2=uppercut
 int getPunch(){
   int p_type = 3;
-  if( max_acc[1] < -1700 ){
+  if( max_acc[1] < -1400 ){
     return p_type;
   }
   p_type = 2;
-  if( max_acc[2] < -1700 || max_acc[2] > 1700 ){
+  if( max_acc[2] < -1400 || max_acc[2] > 1400 ){
     return p_type;
   }
   p_type = 1;
-  if( max_acc[0] < -1500 || max_acc[0] > 1500 ){
+  if( max_acc[0] < -1400 || max_acc[0] > 1400 ){
     return p_type;
   }
   return 0;

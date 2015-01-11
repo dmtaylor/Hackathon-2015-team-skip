@@ -22,13 +22,20 @@
 #define NAME_WIDTH               bounds.size.w
 #define NAME_HEIGHT               40
 #define NAME_MARGIN_BOTTOM        15
-
+  
+#define LEVEL_BUFFER_SIZE        6
+#define LEVEL_WIDTH              40
+#define LEVEL_HEIGHT             40
+#define LEVEL_MARGIN_LEFT        10
+#define LEVEL_MARGIN_TOP         50
+  
 static Window *s_main_window;
 static Layer *s_canvas_layer;
 
 uint32_t _max_health;
 uint32_t _curr_health;
 uint32_t _prev_dmg;
+uint16_t _curr_level;
 char* _adj;
 char* _name;
 enum punch_type _punch_type;
@@ -36,6 +43,7 @@ enum punch_type _punch_type;
 char health_buffer[HEALTH_BUFFER_SIZE];
 char prev_dmg_buffer[PREV_DMG_BUFFER_SIZE];
 char name_buffer[NAME_BUFFER_SIZE];
+char level_buffer[LEVEL_BUFFER_SIZE];
 
 void draw_punch(Layer *this_layer , GContext* ctx , enum punch_type punch_type)
 {
@@ -97,6 +105,7 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 {
 	GRect bounds = layer_get_bounds(this_layer);
 	int16_t x_center = bounds.size.w / 2;
+  int16_t y_center = bounds.size.h / 2;
 
 	draw_punch(this_layer,ctx,_punch_type);
 
@@ -149,6 +158,16 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 			PREV_DMG_HEIGHT),GTextOverflowModeTrailingEllipsis,
 			GTextAlignmentCenter,NULL);
 	}
+  
+  snprintf(level_buffer, LEVEL_BUFFER_SIZE, "%d", _curr_level);
+  graphics_draw_text(ctx,"Lv.",
+    fonts_get_system_font(FONT_KEY_GOTHIC_14),GRect(LEVEL_MARGIN_LEFT,
+    LEVEL_MARGIN_TOP, LEVEL_WIDTH, 14),GTextOverflowModeWordWrap,
+    GTextAlignmentLeft,NULL);
+  graphics_draw_text(ctx,level_buffer,
+    fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD),GRect(LEVEL_MARGIN_LEFT,
+    LEVEL_MARGIN_TOP + 16, LEVEL_WIDTH, 24),GTextOverflowModeWordWrap,
+    GTextAlignmentLeft,NULL);
 
 	snprintf(name_buffer,NAME_BUFFER_SIZE,"%s %s",_adj,_name);
 	graphics_draw_text(ctx,name_buffer,
@@ -174,12 +193,13 @@ void __unload(Window* window)
 	layer_destroy(s_canvas_layer);
 }
 
-void graphix(uint32_t max_health , uint32_t curr_health , uint32_t prev_dmg ,
+void graphix(uint32_t max_health , uint32_t curr_health , uint32_t prev_dmg , uint16_t curr_level,
 	char* adj, char* name , enum punch_type punch_type)
 {
 	_max_health = max_health;
 	_curr_health = curr_health;
 	_prev_dmg = prev_dmg;
+  _curr_level = curr_level;
 	_adj = adj;
 	_name = name;
 	_punch_type = punch_type;

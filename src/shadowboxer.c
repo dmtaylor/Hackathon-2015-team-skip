@@ -34,7 +34,7 @@ void timer_callback(void* data){
 		  game_level = player->curr_level;
 		  free(monster);
 		  monster = gen_monster(game_level);
-		  if(monster==NULL){
+		  if(monsterReady() && monster==NULL){
 			  app_log(APP_LOG_LEVEL_ERROR, "shadowboxer.c", 28,
 					"Error: Monster creation failed\n");
 			  return;
@@ -46,7 +46,7 @@ void timer_callback(void* data){
 	
 	if(damage_dealt){
 		ungraphix();
-		graphix(monster->max_health,monster->curr_health,damage_dealt,
+		graphix(monster->max_health,monster->curr_health,damage_dealt, player->curr_level,
 			monster->adj,monster->name,get_monster_type(monster));
 	}
 	
@@ -111,7 +111,7 @@ void init(){
 	
 	
 	// temp code
-	graphix(monster->max_health,monster->curr_health,0,
+	graphix(monster->max_health,monster->curr_health,0,player->curr_level,
 			monster->adj,monster->name,get_monster_type(monster));
 			
 	timer = app_timer_register(GAME_UPDATE_MS, timer_callback, NULL);

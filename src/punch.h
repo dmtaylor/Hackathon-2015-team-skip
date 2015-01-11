@@ -24,5 +24,7 @@ void pch_dinit();
 
 void roll_d4();
 
+int monsterReady();
+
 #endif
 

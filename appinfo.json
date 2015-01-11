@@ -7,7 +7,14 @@
     "longName": "Skip",
     "projectType": "native",
     "resources": {
-        "media": []
+        "media": [
+            {
+                "file": "images/punchme.png",
+                "menuIcon": true,
+                "name": "PUNCH_ME_LOGO",
+                "type": "png"
+            }
+        ]
     },
     "shortName": "Skip",
     "uuid": "3924b8b1-08ba-4167-8c14-582d8bdf60c6",
