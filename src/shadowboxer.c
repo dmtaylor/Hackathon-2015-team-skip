@@ -15,6 +15,8 @@ static AppTimer *timer;
 
 void timer_callback(void* data){
 	// TODO
+  
+  timer = app_timer_register(GAME_UPDATE_MS, timer_callback, NULL);
 }
 
 void init(){
@@ -67,6 +69,7 @@ void init(){
         app_log(APP_LOG_LEVEL_ERROR, "shadowboxer.c", 59,
 				"Error: Monster malloc failed\n");
     }
+    timer = app_timer_register(GAME_UPDATE_MS, timer_callback, NULL);
     
     pch_init();
     
@@ -74,7 +77,6 @@ void init(){
 	
 	
 	// temp code
-  timer = app_timer_register(GAME_UPDATE_MS, timer_callback, NULL);
 	graphix(200,200,50,"Super Powerful Very Angry","Monster with a Very Long Name",UPPERCUT);
 
 }
