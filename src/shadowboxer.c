@@ -16,23 +16,24 @@ static AppTimer *timer;
 void timer_callback(void* data){
 	// TODO
   
+	uint32_t damage_dealt = (uint32_t)((player->damage_mod) * punch_d4);
 	if(get_monster_type(monster) == punch_Recent){
-		uint32_t damage_dealt = (uint32_t)((player->damage_mod) * punch_d10);
-		update_monster_health(monster, damage_dealt);
-		if(monster_is_dead(monster)){
-			update_player_info(player, monster);
-			game_level = player->curr_level;
-			free(monster);
-			monster = gen_monster(game_level);
-			if(monster==NULL){
-				app_log(APP_LOG_LEVEL_ERROR, "shadowboxer.c", 28,
-						"Error: Monster creation failed\n");
-				return;
-			}
-		}
-		graphix(monster->max_health,monster->curr_health,damage_dealt,
-				monster->adj,monster->name,get_monster_type(monster));
+		damage_dealt += (player->damage_mod) * punch_d10;
 	}
+	update_monster_health(monster, damage_dealt);
+	if(monster_is_dead(monster)){
+		update_player_info(player, monster);
+		game_level = player->curr_level;
+		free(monster);
+		monster = gen_monster(game_level);
+		if(monster==NULL){
+			app_log(APP_LOG_LEVEL_ERROR, "shadowboxer.c", 28,
+					"Error: Monster creation failed\n");
+			return;
+		}
+	}
+	graphix(monster->max_health,monster->curr_health,damage_dealt,
+			monster->adj,monster->name,get_monster_type(monster));
 	
 	timer = app_timer_register(GAME_UPDATE_MS, timer_callback, NULL);
 }
