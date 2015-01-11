@@ -21,7 +21,7 @@
 #define NAME_BUFFER_SIZE         128
 #define NAME_WIDTH               bounds.size.w
 #define NAME_HEIGHT               20
-#define NAME_MARGIN_BOTTOM        10
+#define NAME_MARGIN_BOTTOM        15
 
 static Window *s_main_window;
 static Layer *s_canvas_layer;
