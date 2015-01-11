@@ -24,6 +24,8 @@ static Layer *s_canvas_layer;
 uint32_t _max_health;
 uint32_t _curr_health;
 uint32_t _prev_dmg;
+char* _adj;
+char* _name;
 
 char health_buffer[HEALTH_BUFFER_SIZE];
 char prev_dmg_buffer[PREV_DMG_BUFFER_SIZE];
@@ -101,11 +103,13 @@ void __unload(Window* window)
 	layer_destroy(s_canvas_layer);
 }
 
-void graphix(uint32_t max_health , uint32_t curr_health , uint32_t prev_dmg)
+void graphix(uint32_t max_health , uint32_t curr_health , uint32_t prev_dmg , char* adj, char* name)
 {
 	_max_health = max_health;
 	_curr_health = curr_health;
 	_prev_dmg = prev_dmg;
+	_adj = adj;
+	_name = name;
 
 	s_main_window = window_create();
 	window_set_window_handlers(s_main_window,(WindowHandlers){
