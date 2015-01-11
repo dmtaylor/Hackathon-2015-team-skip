@@ -41,17 +41,20 @@ void draw_punch(Layer *this_layer , GContext* ctx , enum punch_type punch_type)
 {
 	GRect bounds = layer_get_bounds(this_layer);
 	int16_t y_center = bounds.size.h / 2;
+
+	graphics_context_set_fill_color(ctx,GColorBlack);
+	graphics_context_set_stroke_color(ctx,GColorWhite);
+
 	switch(punch_type)
 	{
 		case ERROR:
 			break;
 		case JAB:
-			graphics_context_set_fill_color(ctx,GColorBlack);
 			graphics_fill_rect(ctx,GRect(bounds.size.w - 40,y_center - 10,
 				30,20),0,GCornerNone);
 			graphics_fill_rect(ctx,GRect(bounds.size.w - 20,y_center + 11,
 				10,5),0,GCornerNone);
-			graphics_context_set_stroke_color(ctx,GColorWhite);
+
 			graphics_draw_line(ctx,GPoint(bounds.size.w - 33,y_center-3),
 				GPoint(bounds.size.w - 33,y_center + 10));
 			graphics_draw_line(ctx,GPoint(bounds.size.w - 26,y_center-3),
@@ -60,6 +63,8 @@ void draw_punch(Layer *this_layer , GContext* ctx , enum punch_type punch_type)
 				GPoint(bounds.size.w - 18,y_center + 10));
 			break;
 		case HOOK:
+			graphics_fill_rect(ctx,GPoint(bounds.size.w - 30,y_center - 15,
+				20,30),0,GCornerNone);
 			break;
 		case UPPERCUT:
 			break;
