@@ -63,7 +63,7 @@ void draw_punch(Layer *this_layer , GContext* ctx , enum punch_type punch_type)
 				GPoint(bounds.size.w - 18,y_center + 10));
 			break;
 		case HOOK:
-			graphics_fill_rect(ctx,GPoint(bounds.size.w - 30,y_center - 15,
+			graphics_fill_rect(ctx,GRect(bounds.size.w - 30,y_center - 15,
 				20,30),0,GCornerNone);
 			break;
 		case UPPERCUT:
