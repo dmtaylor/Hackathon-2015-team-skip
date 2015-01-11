@@ -12,6 +12,7 @@ uint16_t game_level;
 
 void init(){
     
+    srand(time(NULL));
     
     // Loads stored game data
     if(persist_exists(PLAYER_STORE)){
