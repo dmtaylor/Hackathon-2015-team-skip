@@ -37,15 +37,16 @@ char health_buffer[HEALTH_BUFFER_SIZE];
 char prev_dmg_buffer[PREV_DMG_BUFFER_SIZE];
 char name_buffer[NAME_BUFFER_SIZE];
 
-void draw_punch(GContext* ctx , enum punch_type punch_type)
+void draw_punch(Layer *this_layer , GContext* ctx , enum punch_type punch_type)
 {
+	GRect bounds = layer_get_bounds(this_layer);
 	int16_t y_center = bounds.size.h / 2;
 	switch(punch_type)
 	{
 		case JAB:
 			graphics_context_set_fill_color(ctx,GColorBlack);
 			graphics_fill_rect(ctx,GRect(bounds.size.w - 15,y_center - 4,
-				11,8),0,GCornerNone );
+				11,8),0,GCornerNone);
 	}
 }
 
@@ -54,7 +55,7 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 	GRect bounds = layer_get_bounds(this_layer);
 	int16_t x_center = bounds.size.w / 2;
 
-	draw_punch(ctx,_punch_type);
+	draw_punch(this_layer,ctx,_punch_type);
 
 	// black outline
 	graphics_context_set_fill_color(ctx,GColorBlack);
