@@ -11,7 +11,7 @@
 #define GAME_UPDATE_MS 50
 
 static int punch_Recent = 0;
-static int punch_d20 = 0;
+static int punch_d10 = 0;
 static int punch_d4 = 0;
 
 static int punch_callback(void *data);
