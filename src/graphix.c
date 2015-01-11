@@ -71,7 +71,7 @@ void draw_punch(Layer *this_layer , GContext* ctx , enum punch_type punch_type)
 			graphics_draw_line(ctx,GPoint(bounds.size.w - 28,y_center - 7),
 				GPoint(bounds.size.w - 15,y_center - 7));
 			graphics_draw_line(ctx,GPoint(bounds.size.w - 28, y_center + 1),
-				GPoint(bounds.size.w - 15,y_center -7));
+				GPoint(bounds.size.w - 15,y_center + 1));
 			break;
 		case UPPERCUT:
 			break;
