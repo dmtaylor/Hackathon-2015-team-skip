@@ -7,6 +7,8 @@
 #define _E_THRESHOLD_ 10000
 #define _X_THRESHOLD_ 1200
 
+static AppTimer *timer;
+
 typedef int Vec4d[VEC_SIZE];
 
 //static GRect window_frame;
@@ -23,16 +25,25 @@ static int raction=false;
 static int lreturn=false;
 static int rreturn=false;
 
-
-//static int p_count = 0;
+static int punch_Recent = 0;
+static int punch_d20 = 0;
+static int punch_d4 = 0;
 
 //returns type of punch; 1=jab, 2=uppercut
 static int getPunch(){
-  if(max_acc[2]<(-2500)||max_acc[2]>2500){
-    return 2;
-  }else if(max_acc[1]<(-2000)){
-    return 3;
-  }else return 1;
+  int p_type = 3;
+  if( max_acc[1] < -1200 ){
+    return p_type;
+  }
+  p_type = 2;
+  if( max_acc[2] < -1700 || max_acc[2] > 1700 ){
+    return p_type;
+  }
+  p_type = 1;
+  if( max_acc[0] < -1500 || max_acc[0] > 1500 ){
+    return p_type;
+  }
+  return 0;
 }
 
 
@@ -118,9 +129,16 @@ static void reg_callback(void *data){
   */
    //APP_LOG(APP_LOG_LEVEL_INFO,"T: %d", p_type);
 }
-/* IMPORTANT CODE TO LOOK AT
+
+static void pch_init(){
   accel_data_service_subscribe(0, NULL);
   compass_service_subscribe(NULL);
   timer = app_timer_register(ACCEL_STEP_MS, reg_callback, NULL);
+}
+
+static void pch_dinit(){
   accel_data_service_unsubscribe();
+}
+/* IMPORTANT CODE TO LOOK AT
+  
   */

@@ -6,7 +6,11 @@
 #ifndef __PUNCH_H__
 #define __PUNCH_H__
 
-#include <pebble.h>
+#include "pebble.h"
+
+static int punch_Recent = 0;
+static int punch_d20 = 0;
+static int punch_d4 = 0;
 
 static int punch_callback(void *data);
 
