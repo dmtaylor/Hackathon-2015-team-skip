@@ -8,5 +8,7 @@
 
 #include <pebble.h>
 
+static int punch_callback(void *data)
+
 #endif
 
