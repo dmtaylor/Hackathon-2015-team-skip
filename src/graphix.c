@@ -83,6 +83,10 @@ void draw_punch(Layer *this_layer , GContext* ctx , enum punch_type punch_type)
 
 			graphics_draw_line(ctx,GPoint(bounds.size.w - 32,y_center + 3),
 				GPoint(bounds.size.w - 32,y_center - 10));
+			graphics_draw_line(ctx,GPoint(bounds.size.w - 24,y_center + 3),
+				GPoint(bounds.size.w - 24,y_center - 10));
+			graphics_draw_line(ctx,GPoint(bounds.size.w - 17,y_center + 3),
+				GPoint(bounds.size.w - 17,y_center - 10));
 			break;
 		case SPEEDBAG:
 			break;
