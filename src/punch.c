@@ -46,7 +46,7 @@ static void roll_d10( int magnetude ){
   punch_d10 = (magnetude / 1000000) * 2 / 5;
 }
 
-static void roll_d4(){
+void roll_d4(){
   int i;
   for(i = 0; i < VEC_SIZE; i++)
     if(punch_d4 < max_acc[i])
@@ -54,7 +54,7 @@ static void roll_d4(){
   punch_d4 /= 1000;
 }
 
-static int punch_callback(void *data) {
+int punch_callback(void *data) {
   AccelData accel = (AccelData) { .x = 0, .y = 0, .z = 0 };
   CompassHeadingData comp;
   compass_service_peek(&comp);
@@ -142,7 +142,7 @@ static void reg_callback(void *data){
   pch_timer = app_timer_register(GAME_UPDATE_MS, reg_callback, NULL);
 }
 
-static void pch_init(){
+void pch_init(){
   punch_Recent = 0;
   punch_d10 = 0;
   punch_d4 = 0;
@@ -152,7 +152,7 @@ static void pch_init(){
   pch_timer = app_timer_register(GAME_UPDATE_MS, reg_callback, NULL);
 }
 
-static void pch_dinit(){
+void pch_dinit(){
   accel_data_service_unsubscribe();
 }
 /* IMPORTANT CODE TO LOOK AT
