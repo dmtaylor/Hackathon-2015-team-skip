@@ -2,17 +2,8 @@
 
 #include "graphix.h"
 
-uint32_t test_max_health = 200;
-uint32_t test_curr_health = 200;
-
-void timer_test_handler(struct tm *tick_time, TimeUnits units_changed)
-{
-	graphix(test_max_health,test_curr_health,0);
-	test_curr_health--;
-}
-
 void init(){
-	tick_timer_service_subscribe(SECOND_UNIT,timer_test_handler);
+	graphix(200,200,0);
 }
 
 void deinit(){
