@@ -76,6 +76,10 @@ void draw_punch(Layer *this_layer , GContext* ctx , enum punch_type punch_type)
 				GPoint(bounds.size.w - 15,y_center + 8));
 			break;
 		case UPPERCUT:
+			graphics_fill_rect(ctx,GRect(bounds.size.w - 40,y_center - 10,
+				30,20),0,GCornerNone);
+			graphics_fill_rect(ctx,GRect(bounds.size.w - 40,y_center - 16,
+				10,5),0,GCornerNone);
 			break;
 		case SPEEDBAG:
 			break;
