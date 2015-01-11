@@ -8,7 +8,9 @@
 
 #include <pebble.h>
 
-static int punch_callback(void *data)
+static int punch_callback(void *data);
+
+static void reg_callback(void *data);
 
 #endif
 
