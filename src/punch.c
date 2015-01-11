@@ -42,8 +42,8 @@ static int getPunch(){
   return 0;
 }
 
-static void roll_d10( int magnetude ){
-  punch_d10 = (magnetude / 1000000) * 2 / 5;
+static void roll_d10( int magnitude ){
+  punch_d10 = (magnitude / 1000000) * 2 / 5;
 }
 
 void roll_d4(){
@@ -56,17 +56,13 @@ void roll_d4(){
 
 int punch_callback(void *data) {
   AccelData accel = (AccelData) { .x = 0, .y = 0, .z = 0 };
-  CompassHeadingData comp;
-  compass_service_peek(&comp);
   accel_service_peek(&accel);
   
-  int comp_head = comp.true_heading/180;
   
   Vec4d ratio;
   ratio[0] = accel.x-(prev_data)[0];
   ratio[1] = accel.y-(prev_data)[1];
   ratio[2] = accel.z-(prev_data)[2];
-  ratio[3] = comp_head-(prev_data)[3];
   
   int p_type = 0;
   
@@ -113,17 +109,14 @@ int punch_callback(void *data) {
      if(accel.x*accel.x > max_acc[0]*max_acc[0]) max_acc[0] = accel.x; 
      if(accel.y< max_acc[1]) max_acc[1] = accel.y;
      if(accel.z*accel.z > max_acc[2]*max_acc[2]) max_acc[2] = accel.z; 
-     max_acc[3] = comp_head;
   }else{
     max_acc[0] = 0;
     max_acc[1] = 0;
     max_acc[2] = 0;
-    max_acc[3] = 0;
   }
   (prev_data)[0] = accel.x; 
   (prev_data)[1] = accel.y; 
   (prev_data)[2] = accel.z; 
-  (prev_data)[3] = comp_head;
   //APP_LOG(APP_LOG_LEVEL_INFO, "M: %d", max_acc[0]);
   //APP_LOG(APP_LOG_LEVEL_INFO,"A: %d, %d, %d; M: %d; T: %d", accel.x, accel.y, accel.z, comp_head, p_type);
   roll_d4();
@@ -149,7 +142,6 @@ void pch_init(){
   punch_d4 = 0;
   
   accel_data_service_subscribe(0, NULL);
-  compass_service_subscribe(NULL);
   pch_timer = app_timer_register(GAME_UPDATE_MS, reg_callback, NULL);
 }
 
