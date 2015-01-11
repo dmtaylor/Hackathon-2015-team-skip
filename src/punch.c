@@ -7,7 +7,7 @@
 #define _E_THRESHOLD_ 10000
 #define _X_THRESHOLD_ 1200
 
-static AppTimer *timer;
+static AppTimer *pch_timer;
 
 typedef int Vec4d[VEC_SIZE];
 
@@ -128,12 +128,13 @@ static void reg_callback(void *data){
   else if (p_type == 3) vibes_long_pulse();
   */
    //APP_LOG(APP_LOG_LEVEL_INFO,"T: %d", p_type);
+  pch_timer = app_timer_register(ACCEL_STEP_MS, reg_callback, NULL);
 }
 
 static void pch_init(){
   accel_data_service_subscribe(0, NULL);
   compass_service_subscribe(NULL);
-  timer = app_timer_register(ACCEL_STEP_MS, reg_callback, NULL);
+  pch_timer = app_timer_register(ACCEL_STEP_MS, reg_callback, NULL);
 }
 
 static void pch_dinit(){

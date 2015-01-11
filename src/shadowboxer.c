@@ -2,6 +2,7 @@
 
 #include "graphix.h"
 #include "data.h"
+#include "punch.h"
 
 #define PLAYER_STORE 5
 #define MONSTER_STORE 6
@@ -10,16 +11,11 @@ player_info* player;
 monster_info* monster;
 uint16_t game_level;
 
-static AppTimer *timer;
-
 void timer_callback(void* data){
 	// TODO
 }
 
 void init(){
-	
-	
-	timer = app_timer_register(ACCEL_STEP_MS, timer_callback, NULL);
     
     srand(time(NULL));
     
