@@ -15,6 +15,8 @@ static AppTimer *timer;
 
 void timer_callback(void* data){
 	// TODO
+  reg_callback(NULL);
+  
   uint32_t damage_dealt = 0;
   
   if( punch_Recent ){
@@ -36,6 +38,8 @@ void timer_callback(void* data){
 		  }
 	  }
   }
+
+  //APP_LOG(APP_LOG_LEVEL_INFO, "D: %lu; P: %d, %d; T: %d", damage_dealt, punch_d4, punch_d10, punch_Recent);
 
 	if(damage_dealt){
 		graphix(monster->max_health,monster->curr_health,damage_dealt,

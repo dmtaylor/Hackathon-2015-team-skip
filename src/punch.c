@@ -128,11 +128,11 @@ void reg_callback(void *data){
   else if (p_type == 2) vibes_long_pulse();
   else if (p_type == 3) vibes_short_pulse();
   
-   //APP_LOG(APP_LOG_LEVEL_INFO,"T: %d", p_type);
+  //APP_LOG(APP_LOG_LEVEL_INFO,"T: %d", p_type);
 
   punch_Recent = p_type;
 	
-  pch_timer = app_timer_register(GAME_UPDATE_MS, reg_callback, NULL);
+  //pch_timer = app_timer_register(GAME_UPDATE_MS, reg_callback, NULL);
 }
 
 void pch_init(){
@@ -141,7 +141,7 @@ void pch_init(){
   punch_d4 = 0;
   
   accel_data_service_subscribe(0, NULL);
-  pch_timer = app_timer_register(GAME_UPDATE_MS, reg_callback, NULL);
+  //pch_timer = app_timer_register(GAME_UPDATE_MS, reg_callback, NULL);
 }
 
 void pch_dinit(){
