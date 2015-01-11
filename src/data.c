@@ -591,6 +591,19 @@ char get_monster_type(monster_info* monster){
 	return monster->type;
 }
 
+player_info* build_player(void){
+	player_info* player = malloc(sizeof(player_info));
+	if(player == NULL){
+		// Log error TODO
+		return NULL;
+	}
+	player->damage_mod = 1.0;
+	player->curr_level = 1;
+	player->curr_xp = 0;
+	player->next_xp = 10;
+	return player;
+}
+
 void update_player_info(player_info* player, monster_info* monster){
 	if(player== NULL){
 		//fprintf(stderr, "Error: player info null, cannot be updated\n");
@@ -606,6 +619,7 @@ void update_player_info(player_info* player, monster_info* monster){
 		player->curr_xp = 0;
 		player->curr_level++;
 		player->next_xp *= 2;
+		player->damage_mod += 0.2;
 	}
 	else{
 		player->curr_xp = new_xp;
