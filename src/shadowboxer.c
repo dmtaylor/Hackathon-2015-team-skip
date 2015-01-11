@@ -11,7 +11,6 @@ monster_info* monster;
 uint16_t game_level;
 
 void init(){
-<<<<<<< HEAD
     
     
     // Loads stored game data
