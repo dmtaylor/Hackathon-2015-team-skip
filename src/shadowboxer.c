@@ -12,6 +12,10 @@ uint16_t game_level;
 
 static AppTimer *timer;
 
+void timer_callback(void* data){
+	// TODO
+}
+
 void init(){
 	
 	
@@ -68,6 +72,8 @@ void init(){
     
     //monster = gen_monster(game_level);
 	
+	
+	// temp code
 	graphix(200,200,50,"Super Powerful Very Angry","Monster with a Very Long Name",UPPERCUT);
 
 }
