@@ -10,13 +10,13 @@
   
 #define GAME_UPDATE_MS 50
 
-int punch_Recent = 0;
-int punch_d10 = 0;
-int punch_d4 = 0;
+static int punch_Recent = 0;
+static int punch_d10 = 0;
+static int punch_d4 = 0;
 
-int punch_callback(void *data);
+int punch_callback(void*);
 
-void reg_callback(void *data);
+void reg_callback(void*);
 
 void pch_init();
 
