@@ -70,6 +70,8 @@ void init(){
 				"Error: Monster malloc failed\n");
     }
     
+    pch_init();
+    
     //monster = gen_monster(game_level);
 	
 	
@@ -81,9 +83,14 @@ void init(){
 void deinit(){
   ungraphix();
   
+  pch_dinit();
+  
   persist_write_data(PLAYER_STORE, player, sizeof(player_info));
   
   persist_write_data(MONSTER_STORE, monster, sizeof(monster_info));
+  
+  //free(player);
+  //free(monster);
   
 }
 
