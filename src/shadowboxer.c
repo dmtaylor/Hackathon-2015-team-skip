@@ -23,6 +23,9 @@ void init(){
 	// testing reading and writing
 	player = build_player();
 	
+	if(player==NULL){
+		exit(255);
+	}
 	game_level = player->curr_level;
 	
 	/*if(persist_exists(MONSTER_STORE)){
