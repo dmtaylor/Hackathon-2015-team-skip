@@ -13,6 +13,11 @@
 #define HEALTH_TEXT_HEIGHT        20
 #define HEALTH_TEXT_MARGIN_TOP    10
 
+#define PREV_DMG_BUFFER_SIZE	  16
+#define PREV_DMG_WIDTH           100
+#define PREV_DMG_HEIGHT           20
+#define PREV_DMG_MARGIN_TOP       10
+
 static Window *s_main_window;
 static Layer *s_canvas_layer;
 
@@ -21,6 +26,7 @@ uint32_t _curr_health;
 uint32_t _prev_dmg;
 
 char health_buffer[HEALTH_BUFFER_SIZE];
+char prev_dmg_buffer[PREV_DMG_BUFFER_SIZE];
 
 void canvas_update_proc(Layer *this_layer, GContext *ctx)
 {
@@ -64,6 +70,19 @@ void canvas_update_proc(Layer *this_layer, GContext *ctx)
 		+ 3*HEALTH_BAR_OUTLINE_WHITE + 3*HEALTH_BAR_OUTLINE_BLACK
 		+ HEALTH_TEXT_MARGIN_TOP,HEALTH_TEXT_WIDTH,HEALTH_TEXT_HEIGHT),
 		GTextOverflowModeTrailingEllipsis,GTextAlignmentCenter,NULL);
+
+	if(_prev_dmg)
+	{
+		snprintf(prev_dmg_buffer,PREV_DMG_BUFFER_SIZE,"-%d!",
+			(int)_prev_dmg);
+		graphics_draw_text(ctx,prev_dmg_buffer,
+			fonts_get_system_font(FONT_KEY_GOTHIC_24),GRect(x_center
+			- (PREV_DMG_WIDTH / 2),HEALTH_BAR_MARGIN_TOP
+			+ 3*HEALTH_BAR_OUTLINE_WHITE + 3*HEALTH_BAR_OUTLINE_BLACK
+			+ HEALTH_TEXT_MARGIN_TOP + HEALTH_TEXT_HEIGHT,PREV_DMG_WIDTH,
+			PREV_DMG_HEIGHT),GTextOverflowModeTrailingEllipsis,
+			GTextAlignmentCenter,NULL);
+	}
 }
 
 void __load(Window* window)
