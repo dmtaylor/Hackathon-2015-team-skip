@@ -54,8 +54,8 @@ void draw_punch(Layer *this_layer , GContext* ctx , enum punch_type punch_type)
 				GPoint(bounds.size.w - 33,y_center + 10));
 			graphics_draw_line(ctx,GPoint(bounds.size.w - 26,y_center-3),
 				GPoint(bounds.size.w - 26,y_center + 10));
-			graphics_draw_line(ctx,GPoint(bounds.size.w - 17,y_center-3),
-				GPoint(bounds.size.w - 17,y_center + 10));
+			graphics_draw_line(ctx,GPoint(bounds.size.w - 18,y_center-3),
+				GPoint(bounds.size.w - 18,y_center + 10));
 			break;
 		case HOOK:
 			break;
