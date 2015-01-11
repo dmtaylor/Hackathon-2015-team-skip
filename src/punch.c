@@ -42,6 +42,17 @@ static int getPunch(){
   return 0;
 }
 
+static void roll_d10( int magnetude ){
+  punch_d10 = (magnetude / 1000000) * 2 / 5;
+}
+
+static void roll_d4(){
+  int i;
+  for(i = 0; i < VEC_SIZE; i++)
+    if(punch_d4 < max_acc[i])
+      punch_d4 = max_acc[i];
+  punch_d4 /= 1000;
+}
 
 static int punch_callback(void *data) {
   AccelData accel = (AccelData) { .x = 0, .y = 0, .z = 0 };
@@ -79,13 +90,14 @@ static int punch_callback(void *data) {
   if (laction && accel.x < -_X_THRESHOLD_){
       laction = false;
       p_type=getPunch();
-      
+      roll_d10(mag_diff);
       lreturn = true;
   }
   if ( raction && accel.x > _X_THRESHOLD_){
       raction = false;
       rreturn = true;
       p_type=getPunch();
+      roll_d10(mag_diff);
   }
   if ( lreturn && accel.x > _X_THRESHOLD_){
       lreturn = false;
@@ -124,6 +136,10 @@ static void reg_callback(void *data){
   else if (p_type == 3) vibes_long_pulse();
   */
    //APP_LOG(APP_LOG_LEVEL_INFO,"T: %d", p_type);
+
+  punch_Recent = p_type;
+  punch_
+	
   pch_timer = app_timer_register(GAME_UPDATE_MS, reg_callback, NULL);
 }
 

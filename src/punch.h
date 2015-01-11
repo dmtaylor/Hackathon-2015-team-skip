@@ -22,5 +22,7 @@ static void pch_init();
 
 static void pch_dinit();
 
+static void roll_d4();
+
 #endif
 
