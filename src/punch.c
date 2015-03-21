@@ -6,7 +6,7 @@
 #define _S_THRESHOLD_ 2000000
 #define _E_THRESHOLD_ 10000
 #define _X_THRESHOLD_ 1200
-#define _NEED_STEPS_ 100
+#define _NEED_STEPS_ 10
 
 typedef int Vec4d[VEC_SIZE];
 
@@ -27,7 +27,7 @@ static int rreturn=false;
  int curr_walk;
 
 int monsterReady(){
-  if(punch_d4 < 1200 && punch_d4 > -1200) return false;
+  //if(punch_d4 < 1200 && punch_d4 > -1200) return false;
   if(++curr_walk >= _NEED_STEPS_){
     curr_walk -= _NEED_STEPS_;
     return true;

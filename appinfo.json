@@ -4,7 +4,7 @@
         ""
     ],
     "companyName": "seayoung@ucsc.edu",
-    "longName": "Skip",
+    "longName": "Boxers and Dragons",
     "projectType": "native",
     "resources": {
         "media": [
@@ -16,7 +16,8 @@
             }
         ]
     },
-    "shortName": "Skip",
+    "sdkVersion": "2",
+    "shortName": "BnD",
     "uuid": "3924b8b1-08ba-4167-8c14-582d8bdf60c6",
     "versionCode": 1,
     "versionLabel": "1.0",
